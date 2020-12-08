@@ -16,8 +16,13 @@ with sr.Microphone() as source:
 		print("Recognizing...")
 		query = r.recognize_google(audio)
 		print(query)
-		voice_engine.say(query)
-		voice_engine.runAndWait()
+		if query == 'switch to Farsi':
+			voice_engine.setProperty('voice', 'fa')
+			voice_engine.say('سلام، من جارویس هستم. یک دستیار صوتی')
+			voice_engine.runAndWait()
+		else: 
+			voice_engine.say(query)
+			voice_engine.runAndWait()
 	except Exception as e:
 		print(e)
 		print("404!")
