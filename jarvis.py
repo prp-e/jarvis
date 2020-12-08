@@ -5,6 +5,7 @@ r = sr.Recognizer()
 
 voice_engine = pyttsx3.init()
 voice_engine.say("Hey, I am Jarvis. I say what you say back to you.")
+voice_engine.runAndWait()
 
 with sr.Microphone() as source:
 	print("Listening...")
