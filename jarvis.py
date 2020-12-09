@@ -20,7 +20,7 @@ class Jarvis:
 
 		self.voice_engine.runAndWait()
 
-	def talk_back(self): 
+	def get_command(self): 
 		with sr.Microphone() as source:
 			print("Listening...")
 			self.voice_recognizer.pause_threshold = 1
@@ -29,16 +29,20 @@ class Jarvis:
 			try:
 				print("Recognizing...")
 				query = self.voice_recognizer.recognize_google(audio)
-				print("You said: " + query)
-				self.voice_engine.say(query)
-				self.voice_engine.runAndWait()
 			except Exception as e:
 				print(e)
-				self.voice_engine.say("Not in a language I understand, or not a valid command.")
-				self.voice_engine.runAndWait()
+				query = "Invalid command."
+
+			return query
+
+	def talk_back(self): 
+		query = self.get_command() 
+		self.voice_engine.say(query)
+		self.voice_engine.runAndWait()
 
 
 if __name__ == '__main__':
 	jarvis_init = Jarvis(sr.Recognizer(), pyttsx3.init())
 	jarvis_init.initial_speak() 
+	jarvis_init.get_command()
 	jarvis_init.talk_back()
