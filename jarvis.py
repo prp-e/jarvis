@@ -33,6 +33,14 @@ class Jarvis:
 				self.voice_engine.say("Nothing heard, please try again later")
 				self.voice_engine.runAndWait()
 
+	def runJarvis(self):
+		self.initial_speak() 
+		self.talk_back() 
+
+
+if __name__ == '__main__':
+	Jarvis.runJarvis()
+
 """
 r = sr.Recognizer()
 now = datetime.now() 
