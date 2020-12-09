@@ -19,7 +19,7 @@ class Jarvis:
 	def talk_back(self): 
 		with sr.Microphone() as source:
 			print("Listening...")
-			r.pause_threshold = 1
+			self.voice_recognizer.pause_threshold = 1
 			audio = self.voice_recognizer.listen(source)
 
 			try:
