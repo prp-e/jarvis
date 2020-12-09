@@ -9,10 +9,14 @@ class Jarvis:
 
 	def initial_speak(self): 
 		now = datetime.now() 
-		if now.hour == 12:
+		if   now.hour < 12 and now.hour > 6:
+			self.voice_engine.say("Hey, Good morning! I am Jarvis. I say what you say back to you.")
+		elif now.hour == 12 or now.hour < 16: 
 			self.voice_engine.say("Hey, Good afternoon! I am Jarvis. I say what you say back to you.")
-		elif now.hour > 12:
+		elif now.hour > 16 and now.hour() < 20:
 			self.voice_engine.say("Hey, Good evening! I am Jarvis. I say what you say back to you.") 
+		else:
+			self.voice_engine.say("Hey, Good night! I am Jarvis. I say what you say back to you.")
 
 		self.voice_engine.runAndWait()
 
