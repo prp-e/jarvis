@@ -1,10 +1,16 @@
+from datetime import datetime
 import speech_recognition as sr
 import pyttsx3
 
 r = sr.Recognizer()
-
+now = datetime.now() 
 voice_engine = pyttsx3.init()
-voice_engine.say("Hey, I am Jarvis. I say what you say back to you.")
+
+if now.hour == 12:
+	voice_engine.say("Hey, Good afternoon! I am Jarvis. I say what you say back to you.")
+elif now.hour > 12:
+	voice_engine.say("Hey, Good evening! I am Jarvis. I say what you say back to you.")
+	
 voice_engine.runAndWait()
 
 with sr.Microphone() as source:
