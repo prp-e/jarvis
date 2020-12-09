@@ -30,7 +30,7 @@ class Jarvis:
 				self.voice_engine.runAndWait()
 			except Exception as e:
 				print(e)
-				self.voice_engine.say("Nothing heard, please try again later")
+				self.voice_engine.say("Not in a language I understand, or not a valid command.")
 				self.voice_engine.runAndWait()
 
 
