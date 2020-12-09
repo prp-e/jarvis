@@ -33,7 +33,7 @@ class Jarvis:
 				self.voice_engine.say("Nothing heard, please try again later")
 				self.voice_engine.runAndWait()
 
-	def runJarvis(self):
+	def runJarvis():
 		self.initial_speak() 
 		self.talk_back() 
 
