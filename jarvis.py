@@ -3,7 +3,7 @@ import speech_recognition as sr
 import pyttsx3
 
 class Jarvis:
-	def __init__(self, voice_recognizer, voice_engine): 
+	def __init__(self): 
 		self.voice_recognizer = sr.Recognizer() 
 		self.voice_recognizer = pyttsx3.init() 
 
@@ -33,7 +33,7 @@ class Jarvis:
 				self.voice_engine.say("Nothing heard, please try again later")
 				self.voice_engine.runAndWait()
 
-	def runJarvis():
+	def runJarvis(self):
 		self.initial_speak() 
 		self.talk_back() 
 
