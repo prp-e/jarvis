@@ -2,6 +2,7 @@ from datetime import datetime
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
+import ytm
 
 class Jarvis:
 	def __init__(self, voice_recognizer, voice_engine): 
@@ -69,6 +70,17 @@ if __name__ == '__main__':
 			jarvis_init.destroy_session()
 		elif "search for " in query:
 			webbrowser.open_new_tab("https://google.com/search?q=" + query.replace("search for ", ""))
+		elif query == "play music":
+			jarvis_init.voice_engine.say("I will play what you say. It may take a few seconds. Please tell me the name of the song or artist.")
+			jarvis_init.voice_engine.runAndWait()
+			music_control = ytm.YouTubeMusic()
+			track = jarvis_init.get_command().lower()
+			results = music_control.search(track)
+			track_details = results['songs'][0]
+			jarvis_init.voice_engine.say("Now playing " + track)
+			jarvis_init.voice_engine.runAndWait()
+			webbrowser.open_new_tab("https://music.youtube.com/watch?v=" + track_details['id'] + "&list=" + track_details['radio']['playlist_id'])
+			exit()
 		else: 
 			jarvis_init.voice_engine.say("Sorry sir, I don't now how to respond to that.")
 
