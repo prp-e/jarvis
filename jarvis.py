@@ -44,5 +44,12 @@ class Jarvis:
 if __name__ == '__main__':
 	jarvis_init = Jarvis(sr.Recognizer(), pyttsx3.init())
 	jarvis_init.initial_speak() 
-	jarvis_init.get_command()
-	jarvis_init.talk_back()
+	while True:
+		query = jarvis_init.get_command() 
+		jarvis_init.voice_engine.say("Processing your request.")
+		if query == "what time is it":
+			jarvis_init.voice_engine.say(f"The time is {datetime.now().hour} {datetime.now().minute}")
+		else: 
+			jarvis_init.voice_engine.say("Sorry sir, I don't now how to respond to that.")
+
+		jarvis_init.voice_engine.runAndWait()
