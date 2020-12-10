@@ -40,6 +40,21 @@ class Jarvis:
 		self.voice_engine.say(query)
 		self.voice_engine.runAndWait()
 
+	def destroy_session(self):
+		now = datetime.now()
+		if   now.hour < 12 and now.hour > 6:
+			self.voice_engine.say("Good morning! until the next time" )
+		elif now.hour == 12 or now.hour < 16: 
+			self.voice_engine.say("Good afternoon! until the next time" )
+		elif now.hour > 16 and now.hour() < 20:
+			self.voice_engine.say("Good evening! until the next time" ) 
+		else:
+			self.voice_engine.say("Good night! until the next time" )
+
+		self.voice_engine.runAndWait()
+		exit()
+
+
 
 if __name__ == '__main__':
 	jarvis_init = Jarvis(sr.Recognizer(), pyttsx3.init())
@@ -49,6 +64,8 @@ if __name__ == '__main__':
 		jarvis_init.voice_engine.say("Processing your request.")
 		if query == "what time is it":
 			jarvis_init.voice_engine.say(f"The time is {datetime.now().hour} {datetime.now().minute}")
+		elif query == "goodbye" or query == "bye":
+			jarvis_init.destroy_session()
 		else: 
 			jarvis_init.voice_engine.say("Sorry sir, I don't now how to respond to that.")
 
