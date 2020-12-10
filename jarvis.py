@@ -1,6 +1,7 @@
 from datetime import datetime
 import speech_recognition as sr
 import pyttsx3
+import webbrowser
 
 class Jarvis:
 	def __init__(self, voice_recognizer, voice_engine): 
@@ -66,6 +67,8 @@ if __name__ == '__main__':
 			jarvis_init.voice_engine.say(f"The time is {datetime.now().hour} {datetime.now().minute}")
 		elif query == "goodbye" or query == "bye":
 			jarvis_init.destroy_session()
+		elif "search for " in query:
+			webbrowser.open_new_tab("https://google.com/search?q=" + query.replace("search for ", ""))
 		else: 
 			jarvis_init.voice_engine.say("Sorry sir, I don't now how to respond to that.")
 
