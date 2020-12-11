@@ -72,7 +72,7 @@ if __name__ == '__main__':
 		if query == "what time is it":
 			jarvis_init.voice_engine.say(f"The time is {datetime.now().hour} {datetime.now().minute}")
 		elif query == "help":
-			jarvis_init.voice_engine.say("Sir, I can help you if you say these: search for, play music, goodbye or bye.")
+			jarvis_init.voice_engine.say("Sir, I can help you if you say these: search for, play music, weather, goodbye or bye.")
 		elif query == "goodbye" or query == "bye":
 			jarvis_init.destroy_session()
 		elif "search for " in query:
