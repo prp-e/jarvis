@@ -19,6 +19,8 @@ class Jarvis:
 			self.voice_engine.say("Hey, Good evening! I am Jarvis, a voice assistant who serves you in the way you like.") 
 		elif now.hour > 20:
 			self.voice_engine.say("Hey, Good night! I am Jarvis, a voice assistant who serves you in the way you like.")
+		else:
+			self.voice_engine.say("Hey, Good day! I am Jarvis, a voice assistant who serves you in the way you like.")
 
 		self.voice_engine.runAndWait()
 
@@ -48,10 +50,12 @@ class Jarvis:
 			self.voice_engine.say("Good morning! until the next time" )
 		elif now.hour >= 12 and now.hour < 16: 
 			self.voice_engine.say("Good afternoon! until the next time" )
-		elif now.hour > 16 and now.hour() < 20:
+		elif now.hour > 16 and now.hour < 20:
 			self.voice_engine.say("Good evening! until the next time" ) 
-		else:
-			self.voice_engine.say("Good day! until the next time" )
+		elif now.hour > 20 :
+			self.voice_engine.say("Good night! until the next time" )
+		else: 
+			self.voice_engine.say("Good day! until the next time")
 
 		self.voice_engine.runAndWait()
 		exit()
