@@ -84,6 +84,7 @@ if __name__ == '__main__':
 			api_key = "128e6d22f4a249a7a3a81023c4ddb318"
 			weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
 			jarvis_init.voice_engine.say("Here is the information you want, Sir.")
+			print(city)
 			response = requests.get(weather_url) 
 			json_response = response.json() 
 			if json_response["cod"] == 200:
