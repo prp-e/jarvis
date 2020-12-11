@@ -89,7 +89,8 @@ if __name__ == '__main__':
 			if json_response["cod"] == 200:
 				information = json_response["main"] 
 				temperature = information["temp"] 
-				jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Kelvin.")
+				temperature = temperature - 273.15
+				jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Celcius")
 				jarvis_init.voice_engine.runAndWait()
 			else: 
 				jarvis_init.voice_engine.say("No information has been found, Sir.")
