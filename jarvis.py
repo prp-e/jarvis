@@ -90,7 +90,8 @@ if __name__ == '__main__':
 			if json_response["cod"] == 200:
 				information = json_response["main"] 
 				temperature = information["temp"] 
-				temperature = temperature - 273
+				temperature = temperature - 273.15 
+				temperature = round(temperature, 2)
 				jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Celcius")
 				jarvis_init.voice_engine.runAndWait()
 			else: 
