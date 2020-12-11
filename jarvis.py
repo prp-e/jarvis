@@ -90,6 +90,10 @@ if __name__ == '__main__':
 				information = json_response["main"] 
 				temperature = information["temp"] 
 				jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Kelvin.")
+				jarvis_init.voice_engine.runAndWait()
+			else: 
+				jarvis_init.voice_engine.say("No information has been found, Sir.")
+				jarvis_init.voice_engine.runAndWait()
 			
 			jarvis_init.voice_engine.runAndWait()
 		elif query == "play music":
