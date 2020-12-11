@@ -84,7 +84,14 @@ if __name__ == '__main__':
 			api_key = "128e6d22f4a249a7a3a81023c4ddb318"
 			weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
 			jarvis_init.voice_engine.say("Here is the information you want, Sir.")
-			webbrowser.open_new_tab(weather_url)
+			response = requests.get(weather_url) 
+			json_response = response.json() 
+			if json_response["cod"] == "200":
+				information = json_response["main"] 
+				temperature = information["temp"] 
+				jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Kelvin.")
+			
+			jarvis_init.voice_engine.runAndWait()
 		elif query == "play music":
 			jarvis_init.voice_engine.say("I will play what you say. It may take a few seconds. Please tell me the name of the song or artist.")
 			jarvis_init.voice_engine.runAndWait()
