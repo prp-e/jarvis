@@ -86,7 +86,7 @@ if __name__ == '__main__':
 			jarvis_init.voice_engine.say("Here is the information you want, Sir.")
 			response = requests.get(weather_url) 
 			json_response = response.json() 
-			if json_response["cod"] == "200":
+			if json_response["cod"] == 200:
 				information = json_response["main"] 
 				temperature = information["temp"] 
 				jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Kelvin.")
