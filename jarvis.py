@@ -1,4 +1,5 @@
 from datetime import datetime
+import requests
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
@@ -76,6 +77,13 @@ if __name__ == '__main__':
 			jarvis_init.destroy_session()
 		elif "search for " in query:
 			webbrowser.open_new_tab("https://google.com/search?q=" + query.replace("search for ", ""))
+		elif query == "weather" or query == "how is weather today":
+			jarvis_init.voice_engine.say("Sir, give me the name of your neighborhood: ")
+			city = jarvis_init.get_command().lower() 
+			api_key = "128e6d22f4a249a7a3a81023c4ddb318"
+			weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+			jarvis_init.voice_engine.say("Here is the information you want, Sir.")
+			webbrowser.open_new_tab(weather_url)
 		elif query == "play music":
 			jarvis_init.voice_engine.say("I will play what you say. It may take a few seconds. Please tell me the name of the song or artist.")
 			jarvis_init.voice_engine.runAndWait()
