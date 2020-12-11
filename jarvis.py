@@ -79,6 +79,7 @@ if __name__ == '__main__':
 			webbrowser.open_new_tab("https://google.com/search?q=" + query.replace("search for ", ""))
 		elif query == "weather" or query == "how is weather today":
 			jarvis_init.voice_engine.say("Sir, give me the name of your neighborhood: ")
+			jarvis_init.voice_engine.runAndWait()
 			city = jarvis_init.get_command().lower() 
 			api_key = "128e6d22f4a249a7a3a81023c4ddb318"
 			weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
