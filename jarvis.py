@@ -4,24 +4,26 @@ import speech_recognition as sr
 import pyttsx3
 import webbrowser
 import ytm
+import config
 
 class Jarvis:
 	def __init__(self, voice_recognizer, voice_engine): 
 		self.voice_recognizer = voice_recognizer
 		self.voice_engine = voice_engine
 
-	def initial_speak(self): 
+	def initial_speak(self, name): 
+		name = config.MY_NAME
 		now = datetime.now() 
 		if   now.hour < 12 and now.hour > 6:
-			self.voice_engine.say("Hey, Good morning! I am Jarvis, a voice assistant who serves you in the way you like.")
+			self.voice_engine.say(f"Hey, Good morning, {name}! I am Jarvis, a voice assistant who serves you in the way you like.")
 		elif now.hour >= 12 and now.hour < 16: 
-			self.voice_engine.say("Hey, Good afternoon! I am Jarvis, a voice assistant who serves you in the way you like.")
+			self.voice_engine.say(f"Hey, Good afternoon, {name}! I am Jarvis, a voice assistant who serves you in the way you like.")
 		elif now.hour > 16 and now.hour < 20:
-			self.voice_engine.say("Hey, Good evening! I am Jarvis, a voice assistant who serves you in the way you like.") 
+			self.voice_engine.say(f"Hey, Good evening, {name}! I am Jarvis, a voice assistant who serves you in the way you like.") 
 		elif now.hour > 20:
-			self.voice_engine.say("Hey, Good night! I am Jarvis, a voice assistant who serves you in the way you like.")
+			self.voice_engine.say(f"Hey, Good night, {name}! I am Jarvis, a voice assistant who serves you in the way you like.")
 		else:
-			self.voice_engine.say("Hey, Good day! I am Jarvis, a voice assistant who serves you in the way you like.")
+			self.voice_engine.say(f"Hey, Good day, {name}! I am Jarvis, a voice assistant who serves you in the way you like.")
 
 		self.voice_engine.runAndWait()
 
@@ -81,7 +83,7 @@ if __name__ == '__main__':
 			jarvis_init.voice_engine.say("Sir, give me the name of your neighborhood: ")
 			jarvis_init.voice_engine.runAndWait()
 			city = jarvis_init.get_command().lower() 
-			api_key = "128e6d22f4a249a7a3a81023c4ddb318"
+			api_key = config.WEATHER_API_KEY
 			weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
 			jarvis_init.voice_engine.say("Here is the information you want, Sir.")
 			print(city)
