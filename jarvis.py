@@ -3,6 +3,7 @@ import requests
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
+import wikipedia
 import ytm
 import config
 
@@ -79,6 +80,12 @@ if __name__ == '__main__':
 			jarvis_init.destroy_session()
 		elif "search for " in query:
 			webbrowser.open_new_tab("https://google.com/search?q=" + query.replace("search for ", ""))
+		elif "information about" in query:
+			query = query.replace("information about", "") 
+			summary = wikipedia.summary(query)
+			jarvis_init.voice_engine.say(f"Here is a quick look at wikipedia for {query}") 
+			jarvis_init.voice_engine.say(summary) 
+			jarvis_init.voice_engine.runAndWait()
 		elif query == "weather" or query == "how is weather today":
 			if config.NEIGHBORHOOD:
 				city = config.NEIGHBORHOOD 
