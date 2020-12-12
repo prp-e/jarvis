@@ -21,6 +21,15 @@ In order to get pyaudio to work, you need `portaudio`. To install portaudio, on 
 
 If you've installed python using `brew`, it's not gonna work. Why? I don't know. Apparantly there is some problems with needed libraries and XCode. So the best solution is installing python from [python.org](http://python.org/). 
 
+## How to configure Jarvis 
+
+First of all, copy `config_example.py` to `config.py` so it can be understood by `jarvis.py` as a legit configuration file. Then, you need to modify these variables : 
+
+* `WEATHER_API_KEY` : Go to [OpenWeatherMap](http://openweathermap.org/) and sign up. It doesn't require anything and it will give you an api key. Copy and paste it here. 
+* `MY_NAME` : So, type your name here. 
+* `MY_TITLE`: To make it more like what we saw in the movie, I used _Sir_. But of course you can use everything your like. I don't know, maybe _Ma'am_ or _Your Majesty_ or _Bro_? (Do you know what Bro means in Mandarin? Oh, sorry for Silicon Valley reference. ) 
+* `NEIGHBORHOOD` : Leave it 0, Jarvis will ask you for the location anytime you say "weather". If you fill it with some appropriate locations (trust me, it's a bit hard for him to understand Iranian citites!) he will answer you much better. 
+
 ## Commands 
 
 - [x] What time is it? Jarvis will tell you the time. 
