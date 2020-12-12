@@ -1,5 +1,11 @@
 # Jarvis ; Voice assistant inspired by Iron man
 
+Edwin Jarvis, or Jarvis, is a person who helps Tony Stark and a bunch of other heros from Marvel's Universe. This is how he looks like: 
+
+![Edwin Jarvis](Edwin_Jarvis.jpg) 
+
+But for some reason, they decided to make him an artifial intelligence assistant in the Iron Man trilogy. Back in 2008, it wasn't really easy to make something like this. But it's 2020 now. Despite all bad things happened to us, we just need some fun. What is better than developing our own personal assistant? This version here isn't an A.I. by the way. It's just a simple voice assistant who does what you code for him. 
+
 ## Dependencies
 
 * `pyaudio` 
