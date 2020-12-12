@@ -83,9 +83,14 @@ if __name__ == '__main__':
 		elif "information about" in query:
 			query = query.replace("information about", "") 
 			summary = wikipedia.summary(query)
-			jarvis_init.voice_engine.say(f"Here is a quick look at wikipedia for {query}") 
-			jarvis_init.voice_engine.say(summary) 
-			jarvis_init.voice_engine.runAndWait()
+			try:
+				jarvis_init.voice_engine.say(f"Here is a quick look at wikipedia for {query}") 
+				jarvis_init.voice_engine.say(summary) 
+				jarvis_init.voice_engine.runAndWait()
+			except: 
+				jarvis_init.voice_engine.say(f"Sorry, {config.MY_TITLE}, it seems wikipedia does not cooperate.")
+				jarvis_init.voice_engine.runAndWait()
+		
 		elif query == "weather" or query == "how is weather today":
 			if config.NEIGHBORHOOD:
 				city = config.NEIGHBORHOOD 
