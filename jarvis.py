@@ -74,7 +74,7 @@ if __name__ == '__main__':
 		if query == "what time is it":
 			jarvis_init.voice_engine.say(f"The time is {datetime.now().hour} {datetime.now().minute}")
 		elif query == "help":
-			jarvis_init.voice_engine.say("Sir, I can help you if you say these: search for, play music, weather, goodbye or bye.")
+			jarvis_init.voice_engine.say(f"{config.MY_TITLE}, I can help you if you say these: search for, play music, weather, goodbye or bye.")
 		elif query == "goodbye" or query == "bye":
 			jarvis_init.destroy_session()
 		elif "search for " in query:
@@ -85,7 +85,7 @@ if __name__ == '__main__':
 			city = jarvis_init.get_command().lower() 
 			api_key = config.WEATHER_API_KEY
 			weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
-			jarvis_init.voice_engine.say("Here is the information you want, Sir.")
+			jarvis_init.voice_engine.say(f"Here is the information you want, {config.MY_TITLE}.")
 			print(city)
 			response = requests.get(weather_url) 
 			json_response = response.json() 
@@ -97,7 +97,7 @@ if __name__ == '__main__':
 				jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Celcius")
 				jarvis_init.voice_engine.runAndWait()
 			else: 
-				jarvis_init.voice_engine.say("No information has been found, Sir.")
+				jarvis_init.voice_engine.say(f"No information has been found, {config.MY_TITLE}.")
 				jarvis_init.voice_engine.runAndWait()
 			
 			jarvis_init.voice_engine.runAndWait()
@@ -113,7 +113,7 @@ if __name__ == '__main__':
 			webbrowser.open_new_tab("https://music.youtube.com/watch?v=" + track_details['id'] + "&list=" + track_details['radio']['playlist_id'])
 			exit()
 		else: 
-			jarvis_init.voice_engine.say("Sorry sir, I don't now how to respond to that.")
+			jarvis_init.voice_engine.say(f"Sorry {config.MY_TITLE}, I don't now how to respond to that.")
 
-		jarvis_init.voice_engine.say("done, what can I do for you now, Sir?")
+		jarvis_init.voice_engine.say(f"done, what can I do for you now, {config.MY_TITLE}?")
 		jarvis_init.voice_engine.runAndWait()
