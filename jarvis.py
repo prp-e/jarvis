@@ -80,25 +80,44 @@ if __name__ == '__main__':
 		elif "search for " in query:
 			webbrowser.open_new_tab("https://google.com/search?q=" + query.replace("search for ", ""))
 		elif query == "weather" or query == "how is weather today":
-			jarvis_init.voice_engine.say("Sir, give me the name of your neighborhood: ")
-			jarvis_init.voice_engine.runAndWait()
-			city = jarvis_init.get_command().lower() 
-			api_key = config.WEATHER_API_KEY
-			weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
-			jarvis_init.voice_engine.say(f"Here is the information you want, {config.MY_TITLE}.")
-			print(city)
-			response = requests.get(weather_url) 
-			json_response = response.json() 
-			if json_response["cod"] == 200:
-				information = json_response["main"] 
-				temperature = information["temp"] 
-				temperature = temperature - 273.15 
-				temperature = round(temperature, 2)
-				jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Celcius")
+			if config.NEIGHBORHOOD:
+				city = config.NEIGHBORHOOD 
+				api_key = config.WEATHER_API_KEY
+				weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+				jarvis_init.voice_engine.say(f"Here is the information you want, {config.MY_TITLE}.")
+				print(city)
+				response = requests.get(weather_url) 
+				json_response = response.json() 
+				if json_response["cod"] == 200:
+					information = json_response["main"] 
+					temperature = information["temp"] 
+					temperature = temperature - 273.15 
+					temperature = round(temperature, 2)
+					jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Celcius")
+					jarvis_init.voice_engine.runAndWait()
+				else: 
+					jarvis_init.voice_engine.say(f"No information has been found, {config.MY_TITLE}.")
+					jarvis_init.voice_engine.runAndWait()
+			else:
+				jarvis_init.voice_engine.say("Sir, give me the name of your neighborhood: ")
 				jarvis_init.voice_engine.runAndWait()
-			else: 
-				jarvis_init.voice_engine.say(f"No information has been found, {config.MY_TITLE}.")
-				jarvis_init.voice_engine.runAndWait()
+				city = jarvis_init.get_command().lower() 
+				api_key = config.WEATHER_API_KEY
+				weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+				jarvis_init.voice_engine.say(f"Here is the information you want, {config.MY_TITLE}.")
+				print(city)
+				response = requests.get(weather_url) 
+				json_response = response.json() 
+				if json_response["cod"] == 200:
+					information = json_response["main"] 
+					temperature = information["temp"] 
+					temperature = temperature - 273.15 
+					temperature = round(temperature, 2)
+					jarvis_init.voice_engine.say(f"Temperature is {temperature} degrees Celcius")
+					jarvis_init.voice_engine.runAndWait()
+				else: 
+					jarvis_init.voice_engine.say(f"No information has been found, {config.MY_TITLE}.")
+					jarvis_init.voice_engine.runAndWait()
 			
 			jarvis_init.voice_engine.runAndWait()
 		elif query == "play music":
