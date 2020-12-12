@@ -67,7 +67,7 @@ class Jarvis:
 
 if __name__ == '__main__':
 	jarvis_init = Jarvis(sr.Recognizer(), pyttsx3.init())
-	jarvis_init.initial_speak() 
+	jarvis_init.initial_speak(config.MY_NAME) 
 	while True:
 		query = jarvis_init.get_command().lower()
 		print(query)
